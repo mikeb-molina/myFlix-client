@@ -27181,74 +27181,87 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies1, setMovies] = (0, _react.useState)([
+    const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            Image: "https://www.imdb.com/title/tt0816692/mediaviewer/rm4043724800/?ref_=tt_ov_i",
+            Image: "https://m.media-amazon.com/images/I/51lCHiTOSsL._SY445_SX342_.jpg",
             Title: "Interstellar",
             Description: "A team of scientist and astonauts is sent through a wormhole to another solar sytem to find habitable planets for all of Humanity.",
-            GenreName: "Thriller",
-            GenreDescription: "Thriller is an intense genre that leaves the audience on the edge of their seat in anticipation of what will happen next.",
-            DirectorName: "Christopher Nolan",
-            DirectorBio: "Chistopher Nolan was born July 30, 1970 and soon began making short films with his fathers camera. His movies are often dark and gritty with an emphasis on in depth storytelling."
+            Genre: {
+                Name: "Thriller",
+                Description: "Thriller is an intense genre that leaves the audience on the edge of their seat in anticipation of what will happen next."
+            },
+            Director: {
+                Name: "Christopher Nolan",
+                Bio: "Chistopher Nolan was born July 30, 1970 and soon began making short films with his fathers camera. His movies are often dark and gritty with an emphasis on in depth storytelling."
+            }
         },
         {
             id: 2,
-            Image: "https://www.imdb.com/title/tt1853728/mediaviewer/rm958180352/?ref_=tt_ov_i",
+            Image: "https://m.media-amazon.com/images/I/61mXwKUaOPL._AC_SY450_.jpg",
             Title: "Django: Unchained",
             Description: "Django is a slave who is freed by a bounty hunter who then teaches Django his trade and helps track down his wife in order to save her from her fate.",
-            GenreName: "Thriller",
-            GenreDescription: "Thriller is an intense genre that leaves the audience on the edge of their seat in anticipation of what will happen next.",
-            DirectorName: "Quentin Tarantino",
-            DirectorBio: "Quentin Tarantino was born on March 27, 1963 in Knoxville, Tennessee and then moved to Califoria at age four and has immersed himself in movies ever since. The movies he makes are often intense and quite violent with a dark tone and a rough edge to them."
+            Genre: {
+                Name: "Thriller",
+                Description: "Thriller is an intense genre that leaves the audience on the edge of their seat in anticipation of what will happen next."
+            },
+            Director: {
+                Name: "Quentin Tarantino",
+                Bio: "Quentin Tarantino was born on March 27, 1963 in Knoxville, Tennessee and then moved to Califoria at age four and has immersed himself in movies ever since. The movies he makes are often intense and quite violent with a dark tone and a rough edge to them."
+            }
         },
         {
             id: 3,
-            Image: "https://www.imdb.com/title/tt0320661/mediaviewer/rm4089716481/?ref_=tt_ov_i",
+            Image: "https://m.media-amazon.com/images/I/71y3iJWWjHL._SY445_.jpg",
             Title: "Kingdom of Heaven",
             Description: "A man travels to Jerusalem during the Crusades in the hopes of finding forgiveness for his crimes. While fighting in Jerusalem he ends up meeting his king and his enemy and falling in love.",
-            GenreName: "Drama",
-            GenreDescription: "This genre is rich with storytelling and dialog but often lacks the violence and explosions of a thriller or adventure genre.",
-            DirectorName: "Ridley Scott",
-            DirectorBio: "Ridely Scott is an English Filmaker who was born on November 30, 1937. He is known best for his science fiction and historical drama films with an excellent foundation on his ability to tell stories."
+            Genre: {
+                Name: "Drama",
+                Description: "This genre is rich with storytelling and dialog but often lacks the violence and explosions of a thriller or adventure genre."
+            },
+            Director: {
+                Name: "Ridley Scott",
+                Bio: "Ridely Scott is an English Filmaker who was born on November 30, 1937. He is known best for his science fiction and historical drama films with an excellent foundation on his ability to tell stories."
+            }
         }
     ]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 59,
+        columnNumber: 9
+    }, undefined);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The List is Empty!"
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 64,
+        columnNumber: 11
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
+            }, movie.id, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 70,
+                columnNumber: 13
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 68,
+        columnNumber: 5
+    }, undefined);
 };
-_s(MainView, "/xp2vlwjgORcs+a06rzAZB5Zdxo=");
+_s(MainView, "9THB7h0iGvsMUHOuVfRaeolUKcU=");
 _c = MainView;
-const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-    movie: selectedMovie,
-    onBackClick: ()=>setSelectedMovie(null)
-}, void 0, false, {
-    fileName: "src/components/main-view/main-view.jsx",
-    lineNumber: 44,
-    columnNumber: 9
-}, undefined);
-if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-    children: "The List is Empty!"
-}, void 0, false, {
-    fileName: "src/components/main-view/main-view.jsx",
-    lineNumber: 49,
-    columnNumber: 11
-}, undefined);
 var _c;
-return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-    children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-            movie: movie,
-            onMovieClick: (newSelectedMovie)=>{
-                setSelectedMovie(newSelectedMovie);
-            }
-        }, movie.id, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 55,
-            columnNumber: 13
-        }, undefined))
-}, void 0, false, {
-    fileName: "src/components/main-view/main-view.jsx",
-    lineNumber: 53,
-    columnNumber: 5
-}, undefined);
+$RefreshReg$(_c, "MainView");
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
 } finally {
@@ -27471,7 +27484,7 @@ const MovieView = ({ movie, onBackClick })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.id
+                    src: movie.Image
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -27536,17 +27549,10 @@ const MovieView = ({ movie, onBackClick })=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.GenreName
+                        children: movie.Genre.Name
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 17,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.GenreDescription
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 18,
                         columnNumber: 17
                     }, undefined)
                 ]
@@ -27558,30 +27564,67 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Director: "
+                        children: "Genre Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 20,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Genre.Description
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 21,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.DirectorName
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 22,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.DirectorBio
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 23,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 20,
+                lineNumber: 19,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 24,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Director.Name
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 25,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 23,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director Bio: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 28,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Director.Bio
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 29,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 27,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27589,7 +27632,7 @@ const MovieView = ({ movie, onBackClick })=>{
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 25,
+                lineNumber: 31,
                 columnNumber: 13
             }, undefined)
         ]
