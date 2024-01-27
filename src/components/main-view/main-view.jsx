@@ -45,7 +45,7 @@ if (selectedMovie) {
     );
 }
 
-if (books.length === 0) {
+if (movies.length === 0) {
     return<div>The List is Empty!</div>
 }
 
