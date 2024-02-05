@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 
-
 const [selectedMovie, setSelectedMovie] = useState(null);
+
+useEffect(() => {
+    fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies");
+});
 
 if (selectedMovie) {
     return (
