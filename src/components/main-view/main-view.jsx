@@ -4,59 +4,54 @@ import {MovieView} from "../movie-view/movie-view";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
+    useEffect(() => {
+        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                const moviesFromApi = data.map((movie) => ({
+                        id: movie._id,
+                        Title: movie.Title,
+                        Image: movie.ImagePath,
+                        Description: movie.Description,
+                        Genre: {
+                            Name: movie.Genre.Name,
+                            Description: movie.Genre.Description
+                        },
+                        Director: {
+                            Name: movie.Director.Name,
+                            Bio: movie.Director.Bio
+                        },
+                        Featured: movie.Featured
+                }));
+                setMovies(moviesFromApi);
+            })
+            .catch((error) => {
+                console.error('Failed to fetch movies', error);
+            })
+    }, []);
 
+    if (selectedMovie) {
+        return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
+    }
 
-const [selectedMovie, setSelectedMovie] = useState(null);
+    if (movies.length === 0) {
+        return <div>The List is Empty!</div>
+    }
 
-useEffect(() => {
-    fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies")
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        const moviesFromApi = data.map((movie) => {
-            return {
-                id: movie._id,
-                title: movie.Title,
-                image: movie.imagePath,
-                description: movie.Description,
-                genre: {
-                    name: movie.Genre.Name,
-                    description: movie.Genre.Description
-                },
-                director: {
-                    name: movie.Director.Name,
-                    bio: movie.Director.Bio
-                },
-                featured: movie.Featured
-
-            };
-        });
-        setMovies(moviesFromApi);
-    });
-}, []);
-
-if (selectedMovie) {
     return (
-        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <div>
+            {movies.map((movie) => (
+                <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                        setSelectedMovie(newSelectedMovie);
+                    }}
+                />
+            ))}
+        </div>
     );
-}
-
-if (movies.length === 0) {
-    return<div>The List is Empty!</div>
-}
-
-return (
-    <div>
-        {movies.map((movie) => (
-            <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-            }}
-            />
-        ))}
-    </div>
-);
 };
