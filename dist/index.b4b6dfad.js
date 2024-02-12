@@ -27189,7 +27189,7 @@ const MainView = ()=>{
             const moviesFromApi = data.map((movie)=>({
                     id: movie._id,
                     Title: movie.Title,
-                    imagePath: movie.ImagePath,
+                    ImagePath: movie.ImagePath,
                     Description: movie.Description,
                     Genre: {
                         Name: movie.Genre.Name,
@@ -28217,7 +28217,7 @@ const MovieView = ({ movie, onBackClick })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.imagePath,
+                    src: movie.ImagePath,
                     alt: movie.Title
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
