@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [ user, setUser] = useState(null);
 
     useEffect(() => {
         fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies")
@@ -32,6 +34,10 @@ export const MainView = () => {
                 console.error('Failed to fetch movies', error);
             })
     }, []);
+
+    if (!user) {
+        return <LoginView />;
+    }
 
     if (selectedMovie) {
         return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
