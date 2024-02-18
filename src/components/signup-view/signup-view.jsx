@@ -16,13 +16,13 @@ export const SignupView = () => {
             Birthday: birthday
         };
 
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/", {
+        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/signup", {
             method:"POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then((respons) =>{
+        }).then((response) =>{
             if(response.ok) {
                 alert("Signup successful");
                 window.location.reload();
