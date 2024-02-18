@@ -27208,7 +27208,9 @@ const MainView = ()=>{
             console.error("Failed to fetch movies", error);
         });
     }, []);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+        onLoggedIn: (user)=>setUser(user)
+    }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 39,
         columnNumber: 16
