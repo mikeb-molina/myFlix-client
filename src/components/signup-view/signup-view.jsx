@@ -2,7 +2,7 @@ export const SignupView = () => {
 
     const handleSubmit = (event) => {};
 
-    reutrn (
+    return (
         <form onSubmit={handleSubmit}>
             <button type="submit">Submit</button>
         </form>
