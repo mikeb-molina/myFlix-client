@@ -7,9 +7,16 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [ user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies")
+        if (!token) {
+            return;
+        }
+
+        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies", {
+            headers: {Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -33,10 +40,17 @@ export const MainView = () => {
             .catch((error) => {
                 console.error('Failed to fetch movies', error);
             })
-    }, []);
+    }, [token]);
 
     if (!user) {
-        return <LoginView onLoggedIn={(user) => setUser(user)} />;
+        return (
+          <LoginView 
+             onLoggedIn={(user, token) => {
+                setUser(user);
+                setToken(token);
+            }} 
+        />
+        );
     }
 
     if (selectedMovie) {
@@ -45,6 +59,7 @@ export const MainView = () => {
             <button 
             onClick={() => {
                 setUser(null);
+                setToken(null);
             }}
             >
                 Logout
@@ -63,6 +78,7 @@ export const MainView = () => {
                 <button
                 onClick={() =>{
                     setUser(null);
+                    setToken(null);
                 }}
                 >
                     Logout 
@@ -77,6 +93,7 @@ export const MainView = () => {
             <button
                 onClick={() => {
                 setUser(null);
+                setToken(null);
                  }}
              >
                 Logout
