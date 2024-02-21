@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
@@ -7,18 +8,16 @@ import { SignupView } from "../signup-view/signup-view";
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");   
-    const [ user, setUser] = useState(storedUser? storedUser : null);
-    const [token, setToken] = useState(storedToken? storedToken : null);
+    const [user, setUser] = useState(storedUser ? storedUser : null);
+    const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
-        if (!token) {
-            return;
-        }
+        if (!token) return;
 
         fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/movies", {
-            headers: {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`},
         })
             .then((response) => response.json())
             .then((data) => {
@@ -42,7 +41,7 @@ export const MainView = () => {
             })
             .catch((error) => {
                 console.error('Failed to fetch movies', error);
-            })
+            });
     }, [token]);
 
     if (!user) {
@@ -52,7 +51,8 @@ export const MainView = () => {
              onLoggedIn={(user, token) => {
                 setUser(user);
                 setToken(token);
-            }}  />
+            }}  
+            />
             or
             <SignupView />
             </>
@@ -98,14 +98,6 @@ export const MainView = () => {
 
     return (
         <div>
-            <button
-                onClick={() => {
-                setUser(null);
-                setToken(null);
-                 }}
-             >
-                Logout
-            </button>
             {movies.map((movie) => (
                 <MovieCard
                     key={movie.id}
@@ -115,6 +107,15 @@ export const MainView = () => {
                     }}
                 />
             ))}
+             <button
+                onClick={() => {
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+                 }}
+             >
+                Logout
+            </button>
         </div>
     );
 };

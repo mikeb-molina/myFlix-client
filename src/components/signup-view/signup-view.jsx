@@ -41,7 +41,7 @@ export const SignupView = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                minLength="3"
+                minLength="1"
                 />
             </label>
             <label>
@@ -51,6 +51,7 @@ export const SignupView = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength="5"
                 />
             </label>
             <label>
@@ -59,7 +60,8 @@ export const SignupView = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required/>
+                required
+                />
             </label>
             <label>
                 Birthday:
@@ -67,7 +69,8 @@ export const SignupView = () => {
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                required/>
+                required
+                />
             </label>
             <button type="submit">Submit</button>
         </form>
