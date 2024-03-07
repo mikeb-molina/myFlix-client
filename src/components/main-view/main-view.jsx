@@ -63,7 +63,7 @@ export const MainView = () => {
             }
         }).then((user) =>{
             if(user) {
-                alert("Added successfully");
+                alert("Added successfully to favorite movies");
                 localStorage.setItem("user", JSON.stringify(user));
                 setUser(user);
             }
@@ -86,7 +86,7 @@ export const MainView = () => {
             }
         }).then((user) =>{
             if(user) {
-                alert("Removed successfully");
+                alert("Removed successfully from favorite movies");
                 localStorage.setItem("user", JSON.stringify(user));
                 setUser(user);
             }
@@ -153,7 +153,11 @@ export const MainView = () => {
                                         <Col>The list is empty!</Col>                           
                                     ): (
                                         <Col md={8}>
-                                            <MovieView movies={movies} />
+                                            <MovieView 
+                                            movies={movies} 
+                                            addFav={addFav}
+                                            removeFav={removeFav}
+                                            />
                                         </Col>
                                     )}
                                 </>
@@ -171,7 +175,11 @@ export const MainView = () => {
                                         <>
                                         {movies.map((movie) => (
                                             <Col className="mb-4" key={movie.id} md={3}>
-                                                <MovieCard movie={movie} />
+                                                <MovieCard 
+                                                movie={movie} 
+                                                addFav={addFav}
+                                                removeFav={removeFav}
+                                                />
                                             </Col>
                                         ))}
                                     </>
@@ -191,6 +199,8 @@ export const MainView = () => {
                             user={user}
                             token={token}
                             movies={movies}
+                            addFav={addFav}
+                            removeFav={removeFav}
                             setUser={setUser}
                             />
                             </Col>
