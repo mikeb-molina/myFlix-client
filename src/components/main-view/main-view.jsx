@@ -27,7 +27,6 @@ export const MainView = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 const moviesFromApi = data.map((movie) => ({
                         id: movie._id,
                         Title: movie.Title,
@@ -57,6 +56,8 @@ export const MainView = () => {
                 onLoggedOut={() =>{
                     setUser(null);
                     setToken(null);
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("token");
                 }}
                 />
                 <Row className="justify-content-md-center">
@@ -87,6 +88,8 @@ export const MainView = () => {
                                             onLoggedIn={(user, token) => {
                                                 setUser(user);
                                                 setToken(token);
+                                                localStorage.setItem("user", JSON.stringify(user));
+                                                localStorage.setItem("token", token);
                                             }}
                                             />
                                     </Col>
@@ -95,7 +98,7 @@ export const MainView = () => {
                             }
                             />
                             <Route
-                                path="/movies/:moviesId"
+                                path="/movies/:movieId"
                                 element={
                                     <>
                                     {!user ? (
@@ -104,7 +107,7 @@ export const MainView = () => {
                                         <Col>The list is empty!</Col>                           
                                     ): (
                                         <Col md={8}>
-                                            <MovieView movie={movies} />
+                                            <MovieView movies={movies} />
                                         </Col>
                                     )}
                                 </>
