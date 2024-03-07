@@ -49,6 +49,52 @@ export const MainView = () => {
             });
     }, [token]);
 
+    const addFav =(id) => {
+        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then ((response) => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                alert("Failed to add")
+            }
+        }).then((user) =>{
+            if(user) {
+                alert("Added successfully");
+                localStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+            }
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
+    };
+
+    const removeFav =(id) => {
+        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then ((response) => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                alert("Failed to remove")
+            }
+        }).then((user) =>{
+            if(user) {
+                alert("Removed successfully");
+                localStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+            }
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
+    };
+
         return (
             <BrowserRouter>
                 <NavigationBar
