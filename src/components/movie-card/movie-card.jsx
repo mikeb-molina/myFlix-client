@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-export const MovieCard = ({movie}) => {
+export const MovieCard = ({movie, addFav, removeFav, isFavorite}) => {
     return(
         <Card className="h-100">
             <Card.Img variant="top" src={movie.ImagePath} />
@@ -13,6 +13,14 @@ export const MovieCard = ({movie}) => {
                 <Link  to={`/movies/${encodeURIComponent(movie.id)}`}>
                     <Button variant="link">Open</Button> 
                 </Link>
+                <div>
+                    {isFavorite ? (
+                        <Button className="justify-content-md-center" onClick={() => removeFav(movie._id)}>Remove from favorites</Button>
+                    ): (
+                        <Button className="justify-content-md-center" onClick={() => addFav(movie._id)}>Add to favorites</Button>
+                        
+                    )}
+                </div>
             </Card.Body>
         </Card>
     );
