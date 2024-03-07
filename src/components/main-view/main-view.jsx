@@ -49,6 +49,16 @@ export const MainView = () => {
             });
     }, [token]);
 
+    const [isFavorite, setIsFavorite] = useState(
+        false
+    );
+
+    useEffect(() =>{
+        if (user?.FavoriteMovies && user.FavoriteMovies?.includes(movies._id)) {
+            setIsFavorite(true);
+        }
+    }, [user]);
+
     const addFav =(id) => {
         fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
             method: "POST",
