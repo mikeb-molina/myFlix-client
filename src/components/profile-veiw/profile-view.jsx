@@ -16,6 +16,9 @@ export const ProfileView = ({user, token, movies, setUser}) => {
     const handleupdate = (event) => {
         event.preventDefault();
 
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("token");
+
         const data= {
             Username: username,
             Password: password,
@@ -30,16 +33,20 @@ export const ProfileView = ({user, token, movies, setUser}) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             }
-        })
-        .then ( async (response) => {
+        }).then ( async (response) => {
+            console.log(response)
             if(response.ok) {
-                response.json();
+                const updatedUser = await response.json();
+               localStorage.setItem("user", JSON.stringify(updatedUser));
+               setUser(updatedUser);
+               window.location.reload();
                 alert("Update was successful");
-                window.location.reload();
             } else{
                 alert("Update failed")
             }
-        });
+        }).catch(error => {
+            console.error("Error: ", error);
+        })
     };
 
     return (
