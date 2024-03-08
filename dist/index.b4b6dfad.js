@@ -41452,7 +41452,7 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/login", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41465,8 +41465,8 @@ const LoginView = ({ onLoggedIn })=>{
                 localStorage.setItem("token", data.token);
                 onLoggedIn(data.user, data.token);
             } else alert("No such user");
-        }).catch((e)=>{
-            alert("Something went wrong");
+        }).catch((error)=>{
+            console.log("Error: ", error);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
@@ -42184,6 +42184,6 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"7FlKK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"bXdgc","../movie-card/movie-card":"bwuIu"}],"lJZlQ":[function() {},{}]},["3iPDY","eE1SX","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"7FlKK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"bXdgc"}],"lJZlQ":[function() {},{}]},["3iPDY","eE1SX","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

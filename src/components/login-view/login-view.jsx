@@ -15,7 +15,7 @@ export const LoginView = ({onLoggedIn}) => {
             Password: password
         };
 
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/login", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/login`, {
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
@@ -33,8 +33,8 @@ export const LoginView = ({onLoggedIn}) => {
                 alert("No such user");
             }
         })
-        .catch((e) => {
-            alert("Something went wrong");
+        .catch((error) => {
+            console.log("Error: ", error);
         });
     };
 
