@@ -27563,14 +27563,14 @@ const MovieCard = ({ movie, addFav, removeFav, isFavorite })=>{
                             fileName: "src/components/movie-card/movie-card.jsx",
                             lineNumber: 18,
                             columnNumber: 25
-                        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                        }, undefined) : console.log()(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             onClick: ()=>addFav(movie._id),
                             children: "Add to favorites"
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
                             lineNumber: 20,
                             columnNumber: 25
-                        }, undefined)
+                        }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 16,

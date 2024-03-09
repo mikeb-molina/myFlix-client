@@ -15,11 +15,10 @@ export const MovieCard = ({movie, addFav, removeFav, isFavorite}) => {
                 </Link>
                 <div>
                     {isFavorite ? (
-                        <Button onClick={() => removeFav(movie._id)}>Remove from favorites</Button>
-                    ): (
-                        <Button onClick={() => addFav(movie._id)}>Add to favorites</Button>
-                        
-                    )}
+                        <Button onClick={() => removeFav(movie._id)}>Remove from favorites</Button> 
+                        ): console.log() (
+                        <Button onClick={() => addFav(movie._id)}>Add to favorites</Button>                        
+                        )} 
                 </div>
             </Card.Body>
         </Card>
