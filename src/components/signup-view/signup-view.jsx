@@ -45,8 +45,8 @@ export const SignupView = () => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required
                 minLength="1"
+                required             
                 />
             </Form.Group>
             <Form.Group>
@@ -55,8 +55,8 @@ export const SignupView = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                     minLength="5"
+                    required                  
                 />
             </Form.Group>
             <Form.Group controlId="formEmail">
@@ -77,7 +77,7 @@ export const SignupView = () => {
                 required
                 />
             </Form.Group>
-            <Button type="submit" onClick={handleSubmit}>Submit</Button>
+            <Button variant="primary" type="submit">Sign up</Button>
         </Form>
     );
 };

@@ -14,7 +14,7 @@ export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     
 
@@ -184,7 +184,7 @@ export const MainView = () => {
                                     ): (
                                         <>
                                         {movies.map((movie) => (
-                                            <Col className="mb-4" key={movie.id} md={3}>
+                                            <Col className="mb-4" key={movie.id} lg={3} md={4} sm={12}>
                                                 <MovieCard 
                                                 movie={movie} 
                                                 addFav={addFav}

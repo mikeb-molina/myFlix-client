@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
+
 export const MovieCard = ({movie, addFav, removeFav, isFavorite}) => {
     return(
         <Card className="h-100">
@@ -15,9 +16,9 @@ export const MovieCard = ({movie, addFav, removeFav, isFavorite}) => {
                 </Link>
                 <div>
                     {isFavorite ? (
-                        <Button onClick={() => removeFav(movie._id)}>Remove from favorites</Button> 
-                        ): console.log() (
-                        <Button onClick={() => addFav(movie._id)}>Add to favorites</Button>                        
+                        <Button variant="primary" onClick={() => removeFav(movie._id)}>Remove from favorites</Button> 
+                        ): (
+                        <Button variant="primary" onClick={() => addFav(movie._id)}>Add to favorites</Button>                        
                         )} 
                 </div>
             </Card.Body>
