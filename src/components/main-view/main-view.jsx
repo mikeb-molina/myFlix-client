@@ -54,13 +54,13 @@ export const MainView = () => {
     );
 
     useEffect(() =>{
-        if (user?.FavoriteMovies && user.FavoriteMovies?.includes(movies._id)) {
+        if (user?.FavoriteMovies && user.FavoriteMovies?.includes(movies.id)) {
             setIsFavorite(true);
         }
     }, [user]);
 
     const addFav =(id) => {
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -83,7 +83,7 @@ export const MainView = () => {
     };
 
     const removeFav =(id) => {
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

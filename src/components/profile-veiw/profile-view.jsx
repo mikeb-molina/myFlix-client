@@ -4,7 +4,7 @@ import {Button, Card, Form} from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({user, token, movies, setUser}) => {
-    const [username, setUsername] = useState(user.username);
+    const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
@@ -26,9 +26,9 @@ export const ProfileView = ({user, token, movies, setUser}) => {
             Birthday: birthday
         };
 
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}`, {
             method: "PUT",
-            Body: JSON.stringify(data),
+            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`

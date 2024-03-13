@@ -27232,12 +27232,12 @@ const MainView = ()=>{
     ]);
     const [isFavorite, setIsFavorite] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
-        if (user?.FavoriteMovies && user.FavoriteMovies?.includes(movies._id)) setIsFavorite(true);
+        if (user?.FavoriteMovies && user.FavoriteMovies?.includes(movies.id)) setIsFavorite(true);
     }, [
         user
     ]);
     const addFav = (id)=>{
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27256,7 +27256,7 @@ const MainView = ()=>{
         });
     };
     const removeFav = (id)=>{
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}/movies/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27560,7 +27560,7 @@ const MovieCard = ({ movie, addFav, removeFav, isFavorite })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         children: isFavorite ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             variant: "primary",
-                            onClick: ()=>removeFav(movie._id),
+                            onClick: ()=>removeFav(movie.id),
                             children: "Remove from favorites"
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
@@ -27568,7 +27568,7 @@ const MovieCard = ({ movie, addFav, removeFav, isFavorite })=>{
                             columnNumber: 25
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             variant: "primary",
-                            onClick: ()=>addFav(movie._id),
+                            onClick: ()=>addFav(movie.id),
                             children: "Add to favorites"
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
@@ -41875,7 +41875,7 @@ var _movieCard = require("../movie-card/movie-card");
 var _s = $RefreshSig$();
 const ProfileView = ({ user, token, movies, setUser })=>{
     _s();
-    const [username, setUsername] = (0, _react.useState)(user.username);
+    const [username, setUsername] = (0, _react.useState)(user.Username);
     const [password, setPassword] = (0, _react.useState)(user.Password);
     const [email, setEmail] = (0, _react.useState)(user.Email);
     const [birthday, setBirthday] = (0, _react.useState)(user.Birthday);
@@ -41890,9 +41890,9 @@ const ProfileView = ({ user, token, movies, setUser })=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users/${user.Username}`, {
             method: "PUT",
-            Body: JSON.stringify(data),
+            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
@@ -42178,7 +42178,7 @@ const ProfileView = ({ user, token, movies, setUser })=>{
         columnNumber: 9
     }, undefined);
 };
-_s(ProfileView, "Y8s+AX0AZjIQPjYtfBP1gLkmEAE=");
+_s(ProfileView, "liv2JdM8/aRUhXNglA6p+zD50Y4=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
