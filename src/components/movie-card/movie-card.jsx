@@ -28,8 +28,14 @@ export const MovieCard = ({movie, addFav, removeFav, isFavorite}) => {
 
 MovieCard.propTypes = {
     movie: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
-        Director: PropTypes.string.isRequired
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+        }).isRequired
     }).isRequired,
+    addFav: PropTypes.func.isRequired,
+    removeFav: PropTypes.func.isRequired,
+    isFavorite:PropTypes.bool.isRequired,
 };
