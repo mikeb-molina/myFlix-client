@@ -18,19 +18,22 @@ export const SignupView = () => {
             Birthday: birthday
         };
 
-        fetch("https://mikes-movie-flix-5278ac249606.herokuapp.com/users", {
+        fetch(`https://mikes-movie-flix-5278ac249606.herokuapp.com/users`, {
             method:"POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then((response) =>{
+        }).then(async (response) =>{
+            console.log(data)
             if(response.ok) {
                 alert("Signup successful");
                 window.location.reload();
             }else{
                 alert("Signup failed")
             }
+        }).catch(error =>{
+            console.error("Error: ", error);
         });
     };
 
@@ -42,8 +45,8 @@ export const SignupView = () => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required
                 minLength="1"
+                required             
                 />
             </Form.Group>
             <Form.Group>
@@ -52,8 +55,8 @@ export const SignupView = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                     minLength="5"
+                    required                  
                 />
             </Form.Group>
             <Form.Group controlId="formEmail">
@@ -74,7 +77,7 @@ export const SignupView = () => {
                 required
                 />
             </Form.Group>
-            <Button type="submit">Submit</Button>
+            <Button variant="primary" type="submit">Sign up</Button>
         </Form>
     );
 };
