@@ -104,6 +104,14 @@ export const MainView = () => {
                     localStorage.removeItem("token");
                 }}
                 />
+                <Form>
+                    <InputGroup className="my-4">
+                    <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search for a movie..."
+                    />
+                    </InputGroup>
+                </Form>
                 <Row className="justify-content-md-center">
                     <Routes>
                         <Route path="/signup" element={
@@ -115,6 +123,7 @@ export const MainView = () => {
                                         </Col>
                                     )
                                 }/>
+                
                         <Route path="/login" element={
                                 user ? (
                                     <Navigate to ="/" />
@@ -140,22 +149,23 @@ export const MainView = () => {
                                         </Col>
                                     )
                                 }/>
-                                <Form>
-                                <InputGroup className="my-4">
-                                <Form.Control
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    placeholder="Search for a movie..."
-                                />
-                                </InputGroup>
-                            </Form>
+                             
                             <Route path="/" element={
                                     !user ? (
                                         <Navigate to="/login" replace />
                                     ): movies.length === 0 ? (
                                         <Col>The list is empty!</Col>
                                     ): (
+                                        
                                         <>
-                                        {movies.map((movie) => (
+                                        {movies
+                                        .filter((movie) => {
+                                            return search.toLocaleLowerCase() === ""
+                                            ? movie
+                                            :movie.title?.toLocaleLowerCase().includes(search);
+                                        })
+                                        
+                                        .map((movie) => (
                                             <Col className="mb-4" key={movie.id} lg={3} md={4} sm={12}>
                                                 <MovieCard 
                                                 movie={movie} 
@@ -168,27 +178,6 @@ export const MainView = () => {
                                     </>
                                 )
                             }/>
-                            <Route path="/" element={
-                                    !user ? (
-                                        <Navigate to="/login" replace />
-                                    ): movies.length === 0 ? (
-                                        <Col>The list is empty!</Col>
-                                    ): (
-                                        <>
-                                        {movies
-                                        .filter((movie) => {
-                                            return search.toLowerCase() === ""
-                                            ? movie
-                                            :movie.title?.toLowerCase().includes(search);
-                                        })
-                                        .map((movie) =>(
-                                            <Col className="mb-4" key={movie.id} md={3}>
-                                                <MovieCard movie={movie} />
-                                            </Col>
-                                        ))}
-                                    </>
-                                )}
-                            />
                     <Route path="/profile" element={
                         !user ? (
                             <Navigate to="/login" replace/>
@@ -198,7 +187,7 @@ export const MainView = () => {
                             </Col>
                         )
                     }/>
-                </Routes>    
+                </Routes>
             </Row>
         </BrowserRouter>
     );
