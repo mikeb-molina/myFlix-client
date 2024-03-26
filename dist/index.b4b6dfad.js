@@ -27413,7 +27413,7 @@ const MainView = ()=>{
                                 columnNumber: 41
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: movies.filter((movie)=>{
-                                    return search.toLocaleLowerCase() === "" ? movie : movie.title?.toLocaleLowerCase().includes(search);
+                                    return search.toLowerCase() === "" ? movie : movie.title?.toLowerCase().includes(search);
                                 }).map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         className: "mb-4",
                                         lg: 3,

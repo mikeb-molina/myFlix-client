@@ -160,9 +160,9 @@ export const MainView = () => {
                                         <>
                                         {movies
                                         .filter((movie) => {
-                                            return search.toLocaleLowerCase() === ""
+                                            return search.toLowerCase() === ""
                                             ? movie
-                                            :movie.title?.toLocaleLowerCase().includes(search);
+                                            :movie.title?.toLowerCase().includes(search);
                                         })
                                         
                                         .map((movie) => (
