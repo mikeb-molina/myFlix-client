@@ -104,14 +104,6 @@ export const MainView = () => {
                     localStorage.removeItem("token");
                 }}
                 />
-                <Form>
-                    <InputGroup className="my-4">
-                        <Form.Control
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search for a movie..."
-                        />
-                    </InputGroup>
-                </Form>
                 <Row className="justify-content-md-center">
                     <Routes>
                         <Route path="/signup" element={
@@ -148,6 +140,14 @@ export const MainView = () => {
                                         </Col>
                                     )
                                 }/>
+                                <Form>
+                                <InputGroup className="my-4">
+                                <Form.Control
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    placeholder="Search for a movie..."
+                                />
+                                </InputGroup>
+                            </Form>
                             <Route path="/" element={
                                     !user ? (
                                         <Navigate to="/login" replace />
